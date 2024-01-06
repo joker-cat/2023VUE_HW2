@@ -16,7 +16,7 @@ createApp({
     },
     created() {
         if (this.pathname === '/admin.html' && this.hasCookie === false) {
-            location.href = '/login.html';
+            location.href = 'login.html';
         } 
         if(this.hasCookie === true) {
             const token = document.cookie.replace(
@@ -43,7 +43,7 @@ createApp({
                     this.userLogin = res.data.success;
                     this.hasCookie = true;
                     document.cookie = `mycookieTest=${token};expires=${new Date(expired)};`;
-                    location.href = '/admin.html';
+                    location.href = 'admin.html';
                 }).catch((error) => {
                     console.log(error);
                 })
@@ -71,7 +71,7 @@ createApp({
         deleteCookie() {
             // 將 cookie 過期時間設置為過去的日期
             document.cookie = `mycookieTest=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
-            location.href = '/login.html';
+            location.href = 'login.html';
         }
     },
     computed: {
