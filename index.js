@@ -77,7 +77,10 @@ createApp({
         deleteCookie() {
             // 將 cookie 過期時間設置為過去的日期
             document.cookie = `mycookieTest=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
-            location.href = 'index.html';
+            console.log(this.hasCookie);
+            setTimeout(() => {
+                location.href = 'index.html';
+            }, 3000);
         }
     },
     computed: {
