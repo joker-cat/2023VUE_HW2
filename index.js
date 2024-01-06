@@ -15,8 +15,6 @@ createApp({
         }
     },
     created() {
-        console.log(this.hasCookie);
-        console.log(this.pathname);
         if (this.pathname === '/2023VUE_HW2/admin.html' && this.hasCookie === false) {
             location.href = 'index.html';
         }
@@ -53,7 +51,7 @@ createApp({
         },
         checkLogin() {
             // #3 取得 Token（Token 僅需要設定一次）
-            if (this.hasCookie === false) {
+            if (document.cookie.includes('mycookieTest') === false) {
                 alert('未驗證');
             }
             const token = document.cookie.replace(
