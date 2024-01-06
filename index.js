@@ -18,7 +18,6 @@ createApp({
         console.log(this.hasCookie);
         console.log(this.pathname);
         if (this.pathname === '/2023VUE_HW2/admin.html' && this.hasCookie === false) {
-            console.log(1);
             location.href = 'index.html';
         }
         if (this.hasCookie === true) {
