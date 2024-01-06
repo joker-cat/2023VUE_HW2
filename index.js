@@ -18,8 +18,8 @@ createApp({
         console.log(this.hasCookie);
         if (this.pathname === '/admin.html' && this.hasCookie === false) {
             location.href = 'index.html';
-        } 
-        if(this.hasCookie === true) {
+        }
+        if (this.hasCookie === true) {
             const token = document.cookie.replace(
                 /(?:(?:^|.*;\s*)mycookieTest\s*\=\s*([^;]*).*$)|^.*$/,
                 "$1",
@@ -64,7 +64,7 @@ createApp({
                     if (res.data.success) {
                         this.hasCookie = res.data.success;
                         alert('已驗證');
-                    }else{
+                    } else {
                         alert('驗證');
                     }
                 }).catch((error) => {
@@ -77,10 +77,9 @@ createApp({
         deleteCookie() {
             // 將 cookie 過期時間設置為過去的日期
             document.cookie = `mycookieTest=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
-            console.log(this.hasCookie);
-            setTimeout(() => {
-                location.href = 'index.html';
-            }, 3000);
+            this.hasCookie = false;
+            location.href = 'index.html';
+
         }
     },
     computed: {
