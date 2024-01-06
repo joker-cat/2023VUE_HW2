@@ -53,6 +53,9 @@ createApp({
         },
         checkLogin() {
             // #3 取得 Token（Token 僅需要設定一次）
+            if (this.hasCookie === false) {
+                alert('未驗證');
+            }
             const token = document.cookie.replace(
                 /(?:(?:^|.*;\s*)mycookieTest\s*\=\s*([^;]*).*$)|^.*$/,
                 "$1",
@@ -65,8 +68,6 @@ createApp({
                     if (res.data.success) {
                         this.hasCookie = res.data.success;
                         alert('已驗證');
-                    } else {
-                        alert('驗證');
                     }
                 }).catch((error) => {
                     console.log(error);
