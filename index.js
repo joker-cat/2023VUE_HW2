@@ -16,6 +16,7 @@ createApp({
     },
     created() {
         console.log(this.hasCookie);
+        console.log(this.pathname);
         if (this.pathname === '/admin.html' && this.hasCookie === false) {
             location.href = 'index.html';
         }
