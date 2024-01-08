@@ -14,7 +14,7 @@
     <div id="app">
         <div class="container">
             <div class="row py-3">
-                <div class="col-md-6">
+                <div class="col-md-7">
                     <h2>產品列表</h2>
                     <table class="table table-hover mt-4">
                         <thead>
@@ -50,34 +50,42 @@
                                 <td width="120">
                                     <button type="button" class="btn btn-primary" @click="detail(item)">查看細節</button>
                                 </td>
+                                <td width="120">
+                                    <button type="button" class="btn btn-danger" @click="del(item.id)" :disabled="item.id=='-NncLB5id_f-nGggRANc'">刪除</button>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
-                    <p>目前有 <span>{{ products.length }}</span> 項產品</p>
+                    <span>目前有 <span>{{ products.length }}</span> 項產品</span>
+                    <button type="button" class="btn btn-success" style="width: 150px;margin: 10px;"
+                        @click="post">新增小丑衣服</button><br>
+                    <label style="margin-right: 10px;">[修改]joooker小丑聯名 售價</label><input type="text" v-model.number="price">
+                    <button type="button" class="btn btn-secondary" style="width: 100px;margin: 10px;"
+                        @click="put">修改</button>
+
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-5">
                     <h2>單一產品細節</h2>
                     <template v-if="chooseIsNull">
-                    <div class="card mb-3">
-                        <img :src="userChoose.imageUrl" class="card-img-top primary-image" alt="主圖">
-                        <div class="card-body">
-                            <h5 class="card-title">
-                                {{userChoose.title }}
-                                <span class="badge bg-primary ms-2">{{ userChoose.category}}</span>
-                            </h5>
-                            <p class="card-text">商品描述：{{userChoose.description }}</p>
-                            <p class="card-text">商品內容：{{ userChoose.content}}</p>
-                            <div class="d-flex">
-                                <p class="card-text me-2">{{ userChoose.price}}</p>
-                                <p class="card-text text-secondary"><del>{{userChoose.origin_price }}</del></p>
-                                元 / {{userChoose.unit }}
+                        <div class="card mb-3">
+                            <img :src="userChoose.imageUrl" class="card-img-top primary-image" alt="主圖">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    {{userChoose.title }}
+                                    <span class="badge bg-primary ms-2">{{ userChoose.category}}</span>
+                                </h5>
+                                <p class="card-text">商品描述：{{userChoose.description }}</p>
+                                <p class="card-text">商品內容：{{ userChoose.content}}</p>
+                                <div class="d-flex">
+                                    <p class="card-text me-2">{{ userChoose.price}}</p>
+                                    <p class="card-text text-secondary"><del>{{userChoose.origin_price }}</del></p>
+                                    元 / {{userChoose.unit }}
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <template v-for="(img,idx) in userChoose.imagesUrl" :key="idx">
-                      <img :src="img" alt="圖片error"
-                        class="images m-2" >
-                    </template>
+                        <template v-for="(img,idx) in userChoose.imagesUrl" :key="idx">
+                            <img :src="img" alt="圖片error" class="images m-2">
+                        </template>
                     </template>
                     <p class="text-secondary" v-if="!chooseIsNull">請選擇一個商品查看</p>
                 </div>
